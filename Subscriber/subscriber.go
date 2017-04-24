@@ -12,10 +12,10 @@ var f MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {
 	fmt.Printf("MSG: %s\n", msg.Payload())
 }
 
-func Subscribe() {
-	opts := MQTT.NewClientOptions().AddBroker("tcp://52.3.243.201:1883")
-	opts.SetUsername("admin@foo.com")
-	opts.SetPassword("Mi4man11")
+func Subscribe(host string,username string, password string) {
+	opts := MQTT.NewClientOptions().AddBroker(host)
+	opts.SetUsername(username)
+	opts.SetPassword(password)
 	opts.SetClientID("go-sub")
 	opts.SetDefaultPublishHandler(f)
 
